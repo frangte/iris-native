@@ -1,0 +1,108 @@
+//
+//  AppStrings.swift
+//  iris
+//
+//  Created by SonnyHoang on 11/11/26.
+//
+
+struct AppStrings {
+    // Login Texts
+    static let orderBookTitle = "Sổ đơn chung cho shop hoa. Cả shop cùng thấy đơn hôm nay, đơn trễ và tiền còn thu."
+    static let loginWithEmail = "Đăng nhập bằng email"
+    static let codeSentDesc = "Chúng tôi gửi mã 6 số vào email này. Không cần mật khẩu."
+    static let emailPlaceHolder = "ten@email.com"
+    static let email = "Email"
+    static let sendCode = "Gửi mã"
+    static let codeSentToEmail = "Mã đã gửi tới"
+    static let codeExpiredIn = "Mã có hiệu lực trong 10 phút. Kiểm tra cả mục Spam."
+    static let sixDigits = "6 chữ số"
+    static let loginCode = "Mã đăng nhập"
+    static let login = "Đăng nhập"
+    static let changeEmailOrResendCode = "Đổi email hoặc gửi lại mã"
+    static let invalidEmail = "Email không hợp lệ"
+
+    // Onboarding Texts
+    static let loginWith = "Đăng nhập với"
+    static let openNewShop = "Mở shop mới"
+    static let youAreOwner = "Bạn là chủ shop. Mời quản lý vào sau, ở mục Shop."
+    static let shopName = "Tên shop"
+    static let shopNamePlaceHolder = "Tiệm hoa Mộc"
+    static let phoneNumber = "Điện thoại"
+    static let optional = "Không bắt buộc"
+    static let address = "Địa chỉ"
+    static let addressPlaceHolder = "Nơi shipper tới lấy hàng"
+    static let createShop = "Tạo shop"
+    static let joinExistingShop = "Hoặc vào shop có sẵn"
+    static let getNewCodeGuide = "Chủ shop lấy mã ở Shop → Thành viên → Tạo mã mời."
+    static let invitationCode = "Mã mời"
+    static let invitationCodePlaceholder = "VD: K7M2QX"
+    static let joinShop = "Vào shop"
+    static let logout = "Đăng xuất"
+    
+    // Shop invitation
+    static let close = "Đóng"
+    static let invitattonTittle = "Bạn được mời vào"
+    static let invitationDesc = "Quản lý xem và sửa được mọi đơn, khách và tiền của shop."
+    static let inviteBy = "Mời bởi"
+    static let role = "Vai trò"
+    static let manager = "Quản lý"
+    static let youAreIn = "Bạn đã ở trong shop này, mở shop"
+    static let join = "Vào"
+    
+    // Tabbar
+    static let today = "Hôm nay"
+    static let order = "Đơn"
+    static let customer = "Khách"
+    static let shop = "Shop"
+    
+    // Navigation
+    static let start = "Bắt đầu"
+    static let newOrder = "Đơn mới"
+    static let editOrder = "Sửa đơn"
+    static let invitation = "Lời mời"
+    
+    // Misc
+    static let todayOrder = "Hôm nay"
+    static let late = "Trễ"
+    static let remainingMoney = "Còn thu"
+    static let noOrder = "Chưa có đơn nào"
+    static let todayOrderDesc = "Đơn hôm nay, đơn trễ và đơn 7 ngày tới hiện ở đây."
+    static let createFirstOrder = "Tạo đơn đầu tiên"
+    static let doneToday = "Xong hôm nay"
+    static let opening = "Đang mở"
+    static let delivered = "Đã giao"
+    static let cancelled = "Đã huỷ"
+    static let orders = "Đơn hàng"
+    static let namePhoneOrderNo = "Tên, số điện thoại, #số đơn"
+    static let filterOrder = "Lọc đơn"
+    static let orderNotFound = "Không tìm thấy đơn"
+    static let noOpeningOrder = "Không có đơn đang mở"
+    static let noOderMatched = "Không có đơn khớp"
+    static let newOrderHere = "Đơn mới tạo sẽ nằm ở đây tới khi giao xong."
+    static let showLatest60Order = "Hiện đơn trong 60 ngày gần nhất."
+    static let cancel = "Huỷ"
+    static let save = "Lưu"
+    static let fullyCollected = "Đã thu đủ"
+    static let remaining = "Còn"
+    static let addAtLeastOne = "Thêm ít nhất một sản phẩm"
+    static let endTimeMustAfterStartTime = "Giờ kết thúc phải sau giờ bắt đầu"
+    static let depositExceedTheOrderTotal = "Tiền cọc lớn hơn tổng đơn"
+    static let noTimer = "Không hẹn giờ"
+    static let customerOrder = "Khách đặt"
+    static let name = "Tên"
+    static let orderCount = "đơn"
+    static let select = "Chọn"
+    static let regularCustomer = "Khách quen"
+    static let orderLinkToCustomer = "Đơn sẽ gắn vào lịch sử của khách này"
+    static let product = "Sản phẩm"
+    static let productName = "Tên sản phẩm"
+    static let deleteProduct = "Xoá sản phẩm"
+    static let amount = "Số lượng"
+    static let price = "Đơn giá"
+    static let addProduct = "Thêm sản phẩm"
+    static let delivery = "Giao nhận"
+    static let deliveryToDoor = "Giao tận nơi"
+    static let customerPickup = "Khách tới lấy"
+    static let deliveryWay = "Cách giao nhận"
+    static let date = "Ngày"
+}
