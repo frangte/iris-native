@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct irisApp: App {
+    /// Composition root for the whole app; lives as long as the process.
+    private let container = AppContainer.live()
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,7 +28,7 @@ struct irisApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(container: container)
         }
         .modelContainer(sharedModelContainer)
     }

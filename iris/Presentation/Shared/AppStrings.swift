@@ -20,6 +20,10 @@ struct AppStrings {
     static let login = "Đăng nhập"
     static let changeEmailOrResendCode = "Đổi email hoặc gửi lại mã"
     static let invalidEmail = "Email không hợp lệ"
+    static let invalidCode = "Mã không đúng"
+    static let codeExpired = "Mã đã hết hạn. Hãy gửi lại mã."
+    static let somethingWentWrong = "Có lỗi xảy ra. Vui lòng thử lại."
+    static let devCodeHint = "Bản dev: mã là"
 
     // Onboarding Texts
     static let loginWith = "Đăng nhập với"
@@ -38,6 +42,9 @@ struct AppStrings {
     static let invitationCodePlaceholder = "VD: K7M2QX"
     static let joinShop = "Vào shop"
     static let logout = "Đăng xuất"
+    static let shopNameRequired = "Nhập tên shop"
+    static let invalidInvitationCode = "Mã mời không hợp lệ"
+    static let invitationCodeNotFound = "Không tìm thấy shop với mã mời này"
     
     // Shop invitation
     static let close = "Đóng"
@@ -62,6 +69,7 @@ struct AppStrings {
     static let invitation = "Lời mời"
     
     // Misc
+    static let comingSoon = "Sắp có"
     static let todayOrder = "Hôm nay"
     static let late = "Trễ"
     static let remainingMoney = "Còn thu"
@@ -105,4 +113,5 @@ struct AppStrings {
     static let customerPickup = "Khách tới lấy"
     static let deliveryWay = "Cách giao nhận"
     static let date = "Ngày"
+    static let ordersToday = "Đơn hôm nay"
 }
