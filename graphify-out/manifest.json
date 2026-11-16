@@ -1,0 +1,644 @@
+{
+  "iris/App/AppContainer.swift": {
+    "mtime": 1794798501.5748036,
+    "seen": 1794800565.521992,
+    "ast_hash": "aa9e0d7ea4c99d6b3568c882cd3a449e",
+    "semantic_hash": "aa9e0d7ea4c99d6b3568c882cd3a449e"
+  },
+  "iris/App/AppSessionStore.swift": {
+    "mtime": 1794485464.3252,
+    "seen": 1794800565.521995,
+    "ast_hash": "1753ed182c0e50d0da4caa69bfebbc32",
+    "semantic_hash": "1753ed182c0e50d0da4caa69bfebbc32"
+  },
+  "iris/App/RootView.swift": {
+    "mtime": 1794543352.7227159,
+    "seen": 1794800565.521996,
+    "ast_hash": "68870bc7073747cead09fc18b768b9e7",
+    "semantic_hash": "68870bc7073747cead09fc18b768b9e7"
+  },
+  "iris/ContentView.swift": {
+    "mtime": 1794371873.5876598,
+    "seen": 1794800565.521996,
+    "ast_hash": "9021c4c3698271af41e1440f26e5b84d",
+    "semantic_hash": "9021c4c3698271af41e1440f26e5b84d"
+  },
+  "iris/DS/Assets.xcassets/AccentColor.colorset/Contents.json": {
+    "mtime": 1794371873.5973663,
+    "seen": 1794800565.521997,
+    "ast_hash": "55019f7265dde0a78318b0807f98e847",
+    "semantic_hash": "55019f7265dde0a78318b0807f98e847"
+  },
+  "iris/DS/Assets.xcassets/AppIcon.appiconset/Contents.json": {
+    "mtime": 1794371876.067728,
+    "seen": 1794800565.5219982,
+    "ast_hash": "cbe75704b2680422c4156009a528e292",
+    "semantic_hash": "cbe75704b2680422c4156009a528e292"
+  },
+  "iris/DS/Assets.xcassets/Contents.json": {
+    "mtime": 1794371873.5997179,
+    "seen": 1794800565.5219982,
+    "ast_hash": "9deb2ada1cc834bbebf8bbad9c8978a1",
+    "semantic_hash": "9deb2ada1cc834bbebf8bbad9c8978a1"
+  },
+  "iris/DS/CardStatus.swift": {
+    "mtime": 1794458295.2422252,
+    "seen": 1794800565.5219998,
+    "ast_hash": "3d211c451f80b7163f35d739b44b6c32",
+    "semantic_hash": "3d211c451f80b7163f35d739b44b6c32"
+  },
+  "iris/DS/Colors.xcassets/Contents.json": {
+    "mtime": 1794385116.42837,
+    "seen": 1794800565.5220008,
+    "ast_hash": "9deb2ada1cc834bbebf8bbad9c8978a1",
+    "semantic_hash": "9deb2ada1cc834bbebf8bbad9c8978a1"
+  },
+  "iris/DS/Colors.xcassets/cell.colorset/Contents.json": {
+    "mtime": 1794385297.229999,
+    "seen": 1794800565.522002,
+    "ast_hash": "cf3f62c338863955166d6fb2197eee8b",
+    "semantic_hash": "cf3f62c338863955166d6fb2197eee8b"
+  },
+  "iris/DS/Colors.xcassets/danger.colorset/Contents.json": {
+    "mtime": 1794385297.230038,
+    "seen": 1794800565.522002,
+    "ast_hash": "f4b117b8fa4c5cc2c6efb88079b49e32",
+    "semantic_hash": "f4b117b8fa4c5cc2c6efb88079b49e32"
+  },
+  "iris/DS/Colors.xcassets/dangerSoft.colorset/Contents.json": {
+    "mtime": 1794385317.852242,
+    "seen": 1794800565.522003,
+    "ast_hash": "8782201e690a332870c5430ab4521e92",
+    "semantic_hash": "8782201e690a332870c5430ab4521e92"
+  },
+  "iris/DS/Colors.xcassets/fill.colorset/Contents.json": {
+    "mtime": 1794385341.453346,
+    "seen": 1794800565.522003,
+    "ast_hash": "5f43a59f9578818a28f7ec2afb4365d3",
+    "semantic_hash": "5f43a59f9578818a28f7ec2afb4365d3"
+  },
+  "iris/DS/Colors.xcassets/groupedBackground.colorset/Contents.json": {
+    "mtime": 1794385359.401788,
+    "seen": 1794800565.522003,
+    "ast_hash": "32d6be6ec6644ff2bc174c839e7fb22d",
+    "semantic_hash": "32d6be6ec6644ff2bc174c839e7fb22d"
+  },
+  "iris/DS/Colors.xcassets/label.colorset/Contents.json": {
+    "mtime": 1794385369.264593,
+    "seen": 1794800565.522004,
+    "ast_hash": "b6e9e1995112b9fdf9a41f7fd1150871",
+    "semantic_hash": "b6e9e1995112b9fdf9a41f7fd1150871"
+  },
+  "iris/DS/Colors.xcassets/onTint.colorset/Contents.json": {
+    "mtime": 1794385297.229339,
+    "seen": 1794800565.522004,
+    "ast_hash": "af6c54383f9eb65c92de4b82b8e06e7a",
+    "semantic_hash": "af6c54383f9eb65c92de4b82b8e06e7a"
+  },
+  "iris/DS/Colors.xcassets/placeholder.colorset/Contents.json": {
+    "mtime": 1794385400.992044,
+    "seen": 1794800565.522005,
+    "ast_hash": "ab1f5d4aba119ceb074110a029dfc940",
+    "semantic_hash": "ab1f5d4aba119ceb074110a029dfc940"
+  },
+  "iris/DS/Colors.xcassets/secondaryLabel.colorset/Contents.json": {
+    "mtime": 1794385419.650045,
+    "seen": 1794800565.522005,
+    "ast_hash": "c583db6a25b744d0ab9fbfb9ee202476",
+    "semantic_hash": "c583db6a25b744d0ab9fbfb9ee202476"
+  },
+  "iris/DS/Colors.xcassets/separator.colorset/Contents.json": {
+    "mtime": 1794385441.113251,
+    "seen": 1794800565.522006,
+    "ast_hash": "58815bab364d8b3433c0729ac9c4253e",
+    "semantic_hash": "58815bab364d8b3433c0729ac9c4253e"
+  },
+  "iris/DS/Colors.xcassets/success.colorset/Contents.json": {
+    "mtime": 1794385460.316046,
+    "seen": 1794800565.522006,
+    "ast_hash": "5956d7ad926ef55880abbdf3628a3ae2",
+    "semantic_hash": "5956d7ad926ef55880abbdf3628a3ae2"
+  },
+  "iris/DS/Colors.xcassets/tertiaryLabel.colorset/Contents.json": {
+    "mtime": 1794385482.664736,
+    "seen": 1794800565.522006,
+    "ast_hash": "d9bd76beac86b74425adba5851a09c48",
+    "semantic_hash": "d9bd76beac86b74425adba5851a09c48"
+  },
+  "iris/DS/Colors.xcassets/tint.colorset/Contents.json": {
+    "mtime": 1794385499.984349,
+    "seen": 1794800565.522007,
+    "ast_hash": "4ecfc912da1735270f76d72c64811950",
+    "semantic_hash": "4ecfc912da1735270f76d72c64811950"
+  },
+  "iris/DS/Colors.xcassets/tintFill.colorset/Contents.json": {
+    "mtime": 1794385515.495907,
+    "seen": 1794800565.522007,
+    "ast_hash": "aa526d6e0cf7e8158fe6eb64571bbabc",
+    "semantic_hash": "aa526d6e0cf7e8158fe6eb64571bbabc"
+  },
+  "iris/DS/Colors.xcassets/tintSoft.colorset/Contents.json": {
+    "mtime": 1794385538.169177,
+    "seen": 1794800565.5220082,
+    "ast_hash": "4505aba769cb426848dffdc8c49cf763",
+    "semantic_hash": "4505aba769cb426848dffdc8c49cf763"
+  },
+  "iris/DS/Components/DSActionRow.swift": {
+    "mtime": 1794798321.0329347,
+    "seen": 1794800565.5220082,
+    "ast_hash": "28ec3f44902314f7fc7ae22dc02fd8d6",
+    "semantic_hash": "28ec3f44902314f7fc7ae22dc02fd8d6"
+  },
+  "iris/DS/Components/DSChip.swift": {
+    "mtime": 1794798674.6616936,
+    "seen": 1794800565.5220091,
+    "ast_hash": "4d9503debcc8e5f85fbce4a8bd1cf63d",
+    "semantic_hash": "4d9503debcc8e5f85fbce4a8bd1cf63d"
+  },
+  "iris/DS/Components/DSEmptyState.swift": {
+    "mtime": 1794543095.6131818,
+    "seen": 1794800565.5220091,
+    "ast_hash": "b12fd1d3622e8e40ddf90cfc2fc6bade",
+    "semantic_hash": "b12fd1d3622e8e40ddf90cfc2fc6bade"
+  },
+  "iris/DS/Components/DSErrorBanner.swift": {
+    "mtime": 1794542578.9503026,
+    "seen": 1794800565.52201,
+    "ast_hash": "6423129f204816eae7a53581d1fb666b",
+    "semantic_hash": "6423129f204816eae7a53581d1fb666b"
+  },
+  "iris/DS/Components/DSFlowLayout.swift": {
+    "mtime": 1794798302.8423018,
+    "seen": 1794800565.52201,
+    "ast_hash": "4e5eda86bd7c2f8c678d8d4b2a329a65",
+    "semantic_hash": "4e5eda86bd7c2f8c678d8d4b2a329a65"
+  },
+  "iris/DS/Components/DSFormCard.swift": {
+    "mtime": 1794542588.6063125,
+    "seen": 1794800565.5220108,
+    "ast_hash": "a1d443d463e1e042f2c74e1eb2d0a1be",
+    "semantic_hash": "a1d443d463e1e042f2c74e1eb2d0a1be"
+  },
+  "iris/DS/Components/DSFormRow.swift": {
+    "mtime": 1794800274.8657858,
+    "seen": 1794800565.5220108,
+    "ast_hash": "7268b84cec2850cb4a693e4738ded57c",
+    "semantic_hash": "7268b84cec2850cb4a693e4738ded57c"
+  },
+  "iris/DS/Components/DSFormSection.swift": {
+    "mtime": 1794542586.7712262,
+    "seen": 1794800565.5220108,
+    "ast_hash": "d610bd83686206e104d2ed279c0d4b0a",
+    "semantic_hash": "d610bd83686206e104d2ed279c0d4b0a"
+  },
+  "iris/DS/Components/DSPrimaryButton.swift": {
+    "mtime": 1794542569.7510254,
+    "seen": 1794800565.522012,
+    "ast_hash": "e666d6c39c478cec08d29241fe804d6a",
+    "semantic_hash": "e666d6c39c478cec08d29241fe804d6a"
+  },
+  "iris/DS/Components/DSRow.swift": {
+    "mtime": 1794798287.2544916,
+    "seen": 1794800565.522012,
+    "ast_hash": "6cd4923390ffcc5ba81e8cab3799c6f9",
+    "semantic_hash": "6cd4923390ffcc5ba81e8cab3799c6f9"
+  },
+  "iris/DS/Components/DSSegmentedPicker.swift": {
+    "mtime": 1794800261.8232994,
+    "seen": 1794800565.522013,
+    "ast_hash": "de48ded2c9c4a8e4aa616c4c5e146692",
+    "semantic_hash": "de48ded2c9c4a8e4aa616c4c5e146692"
+  },
+  "iris/DS/Components/DSStepper.swift": {
+    "mtime": 1794798315.415476,
+    "seen": 1794800565.522013,
+    "ast_hash": "4ecf4376d05a6715f61d2f29a32ac2bb",
+    "semantic_hash": "4ecf4376d05a6715f61d2f29a32ac2bb"
+  },
+  "iris/DS/Components/DSSummaryTile.swift": {
+    "mtime": 1794543408.0919044,
+    "seen": 1794800565.522014,
+    "ast_hash": "4f1ac81eb53f2e6a7b37091354db94ba",
+    "semantic_hash": "4f1ac81eb53f2e6a7b37091354db94ba"
+  },
+  "iris/DS/Components/DSTextButton.swift": {
+    "mtime": 1794542575.2733243,
+    "seen": 1794800565.522014,
+    "ast_hash": "5143d1ce4328bc42680a118bfc1ad480",
+    "semantic_hash": "5143d1ce4328bc42680a118bfc1ad480"
+  },
+  "iris/DS/Components/DSTonalButton.swift": {
+    "mtime": 1794542573.9425676,
+    "seen": 1794800565.522014,
+    "ast_hash": "c59664f6561a98dae974b4918b08611c",
+    "semantic_hash": "c59664f6561a98dae974b4918b08611c"
+  },
+  "iris/DS/Typo/DSFont.swift": {
+    "mtime": 1794542556.5071647,
+    "seen": 1794800565.522015,
+    "ast_hash": "dd5c36e269f9e6a7829ee6cb752bc40c",
+    "semantic_hash": "dd5c36e269f9e6a7829ee6cb752bc40c"
+  },
+  "iris/DS/Typo/DSSpacing.swift": {
+    "mtime": 1794542563.4619026,
+    "seen": 1794800565.522015,
+    "ast_hash": "4b29f8e20080f291142ea8c1624636df",
+    "semantic_hash": "4b29f8e20080f291142ea8c1624636df"
+  },
+  "iris/Data/Auth/InMemoryAuthRepository.swift": {
+    "mtime": 1794485336.785174,
+    "seen": 1794800565.522016,
+    "ast_hash": "a3ea62fa75a95cf1c85bb875e11c2e70",
+    "semantic_hash": "a3ea62fa75a95cf1c85bb875e11c2e70"
+  },
+  "iris/Data/Order/InMemoryOrderRepository.swift": {
+    "mtime": 1794798267.7708466,
+    "seen": 1794800565.522016,
+    "ast_hash": "154440948a289bd3c59db70842677f60",
+    "semantic_hash": "154440948a289bd3c59db70842677f60"
+  },
+  "iris/Data/Shop/InMemoryShopRepository.swift": {
+    "mtime": 1794485331.612439,
+    "seen": 1794800565.522017,
+    "ast_hash": "7062bb9f5f464f982461e5e3ea28c899",
+    "semantic_hash": "7062bb9f5f464f982461e5e3ea28c899"
+  },
+  "iris/Domain/Auth/AuthError.swift": {
+    "mtime": 1794485346.765624,
+    "seen": 1794800565.522017,
+    "ast_hash": "3667531819eee71c01b010ce41438318",
+    "semantic_hash": "3667531819eee71c01b010ce41438318"
+  },
+  "iris/Domain/Auth/AuthRepository.swift": {
+    "mtime": 1794485349.4770288,
+    "seen": 1794800565.522018,
+    "ast_hash": "95e5a9c8c329f056d10d8c9e923c3fd1",
+    "semantic_hash": "95e5a9c8c329f056d10d8c9e923c3fd1"
+  },
+  "iris/Domain/Auth/AuthSession.swift": {
+    "mtime": 1794485344.3780997,
+    "seen": 1794800565.522018,
+    "ast_hash": "3c996318604e48264f32d8e087c4eacc",
+    "semantic_hash": "3c996318604e48264f32d8e087c4eacc"
+  },
+  "iris/Domain/Auth/Email.swift": {
+    "mtime": 1794485340.4805746,
+    "seen": 1794800565.522018,
+    "ast_hash": "1d33032ea3d67344db4c79d8f9ec4176",
+    "semantic_hash": "1d33032ea3d67344db4c79d8f9ec4176"
+  },
+  "iris/Domain/Auth/LoginCode.swift": {
+    "mtime": 1794485342.7572007,
+    "seen": 1794800565.5220191,
+    "ast_hash": "b28663c57610d4042651dc7f4c11b877",
+    "semantic_hash": "b28663c57610d4042651dc7f4c11b877"
+  },
+  "iris/Domain/Auth/RequestLoginCodeUseCase.swift": {
+    "mtime": 1794485352.198576,
+    "seen": 1794800565.5220191,
+    "ast_hash": "8e7b15746d1daccb0b9cc4de70ce9389",
+    "semantic_hash": "8e7b15746d1daccb0b9cc4de70ce9389"
+  },
+  "iris/Domain/Auth/VerifyLoginCodeUseCase.swift": {
+    "mtime": 1794485354.6183846,
+    "seen": 1794800565.52202,
+    "ast_hash": "5a985cee53a03e909232d8c26da01462",
+    "semantic_hash": "5a985cee53a03e909232d8c26da01462"
+  },
+  "iris/Domain/Order/CreateOrderUseCase.swift": {
+    "mtime": 1794798258.3042622,
+    "seen": 1794800565.52202,
+    "ast_hash": "3d4e3c728caa806b5ff45352e6d79d4c",
+    "semantic_hash": "3d4e3c728caa806b5ff45352e6d79d4c"
+  },
+  "iris/Domain/Order/DeliveryMethod.swift": {
+    "mtime": 1794798221.1706946,
+    "seen": 1794800565.52202,
+    "ast_hash": "34779e784fbc0bef64f686e385ec03f8",
+    "semantic_hash": "34779e784fbc0bef64f686e385ec03f8"
+  },
+  "iris/Domain/Order/DeliveryTimeWindow.swift": {
+    "mtime": 1794798226.7057514,
+    "seen": 1794800565.522021,
+    "ast_hash": "3bd34f9f0b6e0e46624beddc2da75e5a",
+    "semantic_hash": "3bd34f9f0b6e0e46624beddc2da75e5a"
+  },
+  "iris/Domain/Order/LoadTodaySummaryUseCase.swift": {
+    "mtime": 1794543074.63892,
+    "seen": 1794800565.522021,
+    "ast_hash": "c6d6e67bcbf78e1eef65b6b07cf95103",
+    "semantic_hash": "c6d6e67bcbf78e1eef65b6b07cf95103"
+  },
+  "iris/Domain/Order/Order.swift": {
+    "mtime": 1794798255.979518,
+    "seen": 1794800565.5220218,
+    "ast_hash": "96153fbe9390f4d7f7a68f15ebb88818",
+    "semantic_hash": "96153fbe9390f4d7f7a68f15ebb88818"
+  },
+  "iris/Domain/Order/OrderDraft.swift": {
+    "mtime": 1794798253.8696032,
+    "seen": 1794800565.5220218,
+    "ast_hash": "b56bf1cd26b4f5f71d7693e62be77cb2",
+    "semantic_hash": "b56bf1cd26b4f5f71d7693e62be77cb2"
+  },
+  "iris/Domain/Order/OrderError.swift": {
+    "mtime": 1794798229.640291,
+    "seen": 1794800565.522023,
+    "ast_hash": "bc39ace7df3365986fb86aa212f9c980",
+    "semantic_hash": "bc39ace7df3365986fb86aa212f9c980"
+  },
+  "iris/Domain/Order/OrderInput.swift": {
+    "mtime": 1794798241.6225154,
+    "seen": 1794800565.522023,
+    "ast_hash": "0c1f6d95d37926e36480ec9d3aef93cf",
+    "semantic_hash": "0c1f6d95d37926e36480ec9d3aef93cf"
+  },
+  "iris/Domain/Order/OrderPricing.swift": {
+    "mtime": 1794798232.8795004,
+    "seen": 1794800565.522023,
+    "ast_hash": "1423bf000f555033bd14ab7fd9d7b6e3",
+    "semantic_hash": "1423bf000f555033bd14ab7fd9d7b6e3"
+  },
+  "iris/Domain/Order/OrderRepository.swift": {
+    "mtime": 1794798260.9347713,
+    "seen": 1794800565.522024,
+    "ast_hash": "073e3cb18ccc909ec38942a2917f934b",
+    "semantic_hash": "073e3cb18ccc909ec38942a2917f934b"
+  },
+  "iris/Domain/Order/OrderSource.swift": {
+    "mtime": 1794798218.953492,
+    "seen": 1794800565.522024,
+    "ast_hash": "5999edbc6c92b9a460e3a512f33b9925",
+    "semantic_hash": "5999edbc6c92b9a460e3a512f33b9925"
+  },
+  "iris/Domain/Order/TodaySummary.swift": {
+    "mtime": 1794543070.3619761,
+    "seen": 1794800565.5220249,
+    "ast_hash": "bb15dcce5c2d1f0a5a752f71c3bed669",
+    "semantic_hash": "bb15dcce5c2d1f0a5a752f71c3bed669"
+  },
+  "iris/Domain/Shop/CreateShopUseCase.swift": {
+    "mtime": 1794485323.2332237,
+    "seen": 1794800565.5220249,
+    "ast_hash": "3b14ddf719261f0f790003d29386dda6",
+    "semantic_hash": "3b14ddf719261f0f790003d29386dda6"
+  },
+  "iris/Domain/Shop/InviteCode.swift": {
+    "mtime": 1794485315.449868,
+    "seen": 1794800565.5220249,
+    "ast_hash": "511fb5d166e96753cab7482e4eb624d6",
+    "semantic_hash": "511fb5d166e96753cab7482e4eb624d6"
+  },
+  "iris/Domain/Shop/JoinShopUseCase.swift": {
+    "mtime": 1794485325.8687613,
+    "seen": 1794800565.522026,
+    "ast_hash": "a30462914553617ca8bb09421d1f5040",
+    "semantic_hash": "a30462914553617ca8bb09421d1f5040"
+  },
+  "iris/Domain/Shop/Shop.swift": {
+    "mtime": 1794485308.0901694,
+    "seen": 1794800565.522026,
+    "ast_hash": "7f812b7fa2eb46b2f8833f3006cf9a87",
+    "semantic_hash": "7f812b7fa2eb46b2f8833f3006cf9a87"
+  },
+  "iris/Domain/Shop/ShopDraft.swift": {
+    "mtime": 1794485311.8728642,
+    "seen": 1794800565.522027,
+    "ast_hash": "49ab1dc4357743bfe041126e787b1269",
+    "semantic_hash": "49ab1dc4357743bfe041126e787b1269"
+  },
+  "iris/Domain/Shop/ShopError.swift": {
+    "mtime": 1794485317.7759893,
+    "seen": 1794800565.522027,
+    "ast_hash": "2a8fe63fd707213c21bfa5b2ea698595",
+    "semantic_hash": "2a8fe63fd707213c21bfa5b2ea698595"
+  },
+  "iris/Domain/Shop/ShopRepository.swift": {
+    "mtime": 1794485320.4731588,
+    "seen": 1794800565.522028,
+    "ast_hash": "78eedc6bbcacfc4635f00f325527c39a",
+    "semantic_hash": "78eedc6bbcacfc4635f00f325527c39a"
+  },
+  "iris/Item.swift": {
+    "mtime": 1794371873.5916116,
+    "seen": 1794800565.522028,
+    "ast_hash": "4ed493452ceebd2b761c62bacfebcf9c",
+    "semantic_hash": "4ed493452ceebd2b761c62bacfebcf9c"
+  },
+  "iris/Presentation/Auth/AuthError+Message.swift": {
+    "mtime": 1794485399.4209073,
+    "seen": 1794800565.522028,
+    "ast_hash": "26cc141075e46c66f094021b8de6c194",
+    "semantic_hash": "26cc141075e46c66f094021b8de6c194"
+  },
+  "iris/Presentation/Auth/AuthStepContent.swift": {
+    "mtime": 1794485397.082694,
+    "seen": 1794800565.5220292,
+    "ast_hash": "8e57161d4332c3f016ac0995e894515a",
+    "semantic_hash": "8e57161d4332c3f016ac0995e894515a"
+  },
+  "iris/Presentation/Auth/AuthView.swift": {
+    "mtime": 1794541891.243274,
+    "seen": 1794800565.5220292,
+    "ast_hash": "b4f51a48e4758955972e285cb7a78615",
+    "semantic_hash": "b4f51a48e4758955972e285cb7a78615"
+  },
+  "iris/Presentation/Auth/AuthViewModel.swift": {
+    "mtime": 1794485413.6019375,
+    "seen": 1794800565.52203,
+    "ast_hash": "6da60c5791ce916ca142e5345b182dc2",
+    "semantic_hash": "6da60c5791ce916ca142e5345b182dc2"
+  },
+  "iris/Presentation/Auth/Components/AuthField.swift": {
+    "mtime": 1794542592.7260568,
+    "seen": 1794800565.52203,
+    "ast_hash": "25a60f4d1cfe381ba24c71611b6e7a4b",
+    "semantic_hash": "25a60f4d1cfe381ba24c71611b6e7a4b"
+  },
+  "iris/Presentation/Auth/Components/AuthHeader.swift": {
+    "mtime": 1794542594.9568975,
+    "seen": 1794800565.52203,
+    "ast_hash": "45654305af16feed32fb9b5bad11342a",
+    "semantic_hash": "45654305af16feed32fb9b5bad11342a"
+  },
+  "iris/Presentation/Main/MainTabView.swift": {
+    "mtime": 1794543121.9698584,
+    "seen": 1794800565.522031,
+    "ast_hash": "2ad966d6bb476c29969718d985b10f44",
+    "semantic_hash": "2ad966d6bb476c29969718d985b10f44"
+  },
+  "iris/Presentation/Onboarding/OnboardingView.swift": {
+    "mtime": 1794542596.3061159,
+    "seen": 1794800565.522031,
+    "ast_hash": "45b29f76e0a9add4282ecc21f8a3b621",
+    "semantic_hash": "45b29f76e0a9add4282ecc21f8a3b621"
+  },
+  "iris/Presentation/Onboarding/OnboardingViewModel.swift": {
+    "mtime": 1794485446.4508033,
+    "seen": 1794800565.522032,
+    "ast_hash": "627dc005079c3f0f6e1cf68a5dd8a77f",
+    "semantic_hash": "627dc005079c3f0f6e1cf68a5dd8a77f"
+  },
+  "iris/Presentation/Onboarding/ShopError+Message.swift": {
+    "mtime": 1794485434.9691763,
+    "seen": 1794800565.522032,
+    "ast_hash": "3cb162c593840f3db609d97362f5d86f",
+    "semantic_hash": "3cb162c593840f3db609d97362f5d86f"
+  },
+  "iris/Presentation/Order/Components/DeliveryScheduleCard.swift": {
+    "mtime": 1794798677.4126213,
+    "seen": 1794800565.522033,
+    "ast_hash": "67fdd9b7e18ac856ad3c049569a6236e",
+    "semantic_hash": "67fdd9b7e18ac856ad3c049569a6236e"
+  },
+  "iris/Presentation/Order/Components/MoneyFieldRow.swift": {
+    "mtime": 1794798433.140302,
+    "seen": 1794800565.522033,
+    "ast_hash": "a335824341117bbd616e26b90d377d73",
+    "semantic_hash": "a335824341117bbd616e26b90d377d73"
+  },
+  "iris/Presentation/Order/Components/OrderItemsCard.swift": {
+    "mtime": 1794798439.8952422,
+    "seen": 1794800565.522034,
+    "ast_hash": "1951435f7fe03d45c8d4c440554cf6f7",
+    "semantic_hash": "1951435f7fe03d45c8d4c440554cf6f7"
+  },
+  "iris/Presentation/Order/DeliveryMethod+Title.swift": {
+    "mtime": 1794798398.9083257,
+    "seen": 1794800565.522034,
+    "ast_hash": "9bc2aa4774bfa415e1266a9b4af7cbbb",
+    "semantic_hash": "9bc2aa4774bfa415e1266a9b4af7cbbb"
+  },
+  "iris/Presentation/Order/NewOrderView.swift": {
+    "mtime": 1794798478.3040283,
+    "seen": 1794800565.522035,
+    "ast_hash": "c7f5198116ef57209f90d461802a534a",
+    "semantic_hash": "c7f5198116ef57209f90d461802a534a"
+  },
+  "iris/Presentation/Order/NewOrderViewModel.swift": {
+    "mtime": 1794798425.4654114,
+    "seen": 1794800565.522035,
+    "ast_hash": "72ed891b425f1b54628472b3967771d0",
+    "semantic_hash": "72ed891b425f1b54628472b3967771d0"
+  },
+  "iris/Presentation/Order/OrderError+Message.swift": {
+    "mtime": 1794798402.084203,
+    "seen": 1794800565.522036,
+    "ast_hash": "5ade99d6c166d7e839fe064ffa211e71",
+    "semantic_hash": "5ade99d6c166d7e839fe064ffa211e71"
+  },
+  "iris/Presentation/Order/OrderSource+Title.swift": {
+    "mtime": 1794798396.8905082,
+    "seen": 1794800565.522036,
+    "ast_hash": "1cfe5ba75d10e472ddd549c84caf97c0",
+    "semantic_hash": "1cfe5ba75d10e472ddd549c84caf97c0"
+  },
+  "iris/Presentation/Shared/AppFormatters.swift": {
+    "mtime": 1794798325.3574238,
+    "seen": 1794800565.522037,
+    "ast_hash": "4a952d45ba608c2ce750a1fae3dc3ea1",
+    "semantic_hash": "4a952d45ba608c2ce750a1fae3dc3ea1"
+  },
+  "iris/Presentation/Shared/AppStrings.swift": {
+    "mtime": 1794798333.7758021,
+    "seen": 1794800565.522037,
+    "ast_hash": "59759cf1bee2bdf9f9229c9b9b93620e",
+    "semantic_hash": "59759cf1bee2bdf9f9229c9b9b93620e"
+  },
+  "iris/Presentation/Today/TodayView.swift": {
+    "mtime": 1794798499.1983488,
+    "seen": 1794800565.522038,
+    "ast_hash": "a6094c0bbe7994123e3ba94f4a142309",
+    "semantic_hash": "a6094c0bbe7994123e3ba94f4a142309"
+  },
+  "iris/Presentation/Today/TodayViewModel.swift": {
+    "mtime": 1794798488.8133986,
+    "seen": 1794800565.522038,
+    "ast_hash": "e93eea7f6e4e4f0e2398ffb7fdf0210c",
+    "semantic_hash": "e93eea7f6e4e4f0e2398ffb7fdf0210c"
+  },
+  "iris/irisApp.swift": {
+    "mtime": 1794485479.3270102,
+    "seen": 1794800565.522039,
+    "ast_hash": "e51f0d1ab015358a9fa2ce50d1c7fb97",
+    "semantic_hash": "e51f0d1ab015358a9fa2ce50d1c7fb97"
+  },
+  "irisTests/Domain/EmailTests.swift": {
+    "mtime": 1794483931.7142634,
+    "seen": 1794800565.522039,
+    "ast_hash": "78f198374a8311f4fd9ee08b1466ec83",
+    "semantic_hash": "78f198374a8311f4fd9ee08b1466ec83"
+  },
+  "irisTests/Domain/OrderDraftTests.swift": {
+    "mtime": 1794798563.1704826,
+    "seen": 1794800565.5220401,
+    "ast_hash": "d455c26b5b48d1216639d0ca0cc15cfe",
+    "semantic_hash": "d455c26b5b48d1216639d0ca0cc15cfe"
+  },
+  "irisTests/Domain/ShopTests.swift": {
+    "mtime": 1794485522.128211,
+    "seen": 1794800565.5220401,
+    "ast_hash": "d08dc3193ebaeb16a3437204102a63ca",
+    "semantic_hash": "d08dc3193ebaeb16a3437204102a63ca"
+  },
+  "irisTests/MockAuthRepository.swift": {
+    "mtime": 1794485483.600365,
+    "seen": 1794800565.5220401,
+    "ast_hash": "7a073f832e974ae39e0e1db10710c88f",
+    "semantic_hash": "7a073f832e974ae39e0e1db10710c88f"
+  },
+  "irisTests/MockOrderRepository.swift": {
+    "mtime": 1794798506.5873437,
+    "seen": 1794800565.522041,
+    "ast_hash": "99ec9eac615e3caaec1434d6c020b41c",
+    "semantic_hash": "99ec9eac615e3caaec1434d6c020b41c"
+  },
+  "irisTests/MockShopRepository.swift": {
+    "mtime": 1794485488.3195632,
+    "seen": 1794800565.522041,
+    "ast_hash": "fbd54bd8703d4b1e02fe5f6607fa0522",
+    "semantic_hash": "fbd54bd8703d4b1e02fe5f6607fa0522"
+  },
+  "irisTests/Presentation/AuthViewModelTests.swift": {
+    "mtime": 1794485503.1155312,
+    "seen": 1794800565.522042,
+    "ast_hash": "00a28199edac954d4360dbd3fd865f8c",
+    "semantic_hash": "00a28199edac954d4360dbd3fd865f8c"
+  },
+  "irisTests/Presentation/NewOrderViewModelTests.swift": {
+    "mtime": 1794798550.094593,
+    "seen": 1794800565.522042,
+    "ast_hash": "e478570dcd4058d1af03ddbe0cfeb82e",
+    "semantic_hash": "e478570dcd4058d1af03ddbe0cfeb82e"
+  },
+  "irisTests/Presentation/OnboardingViewModelTests.swift": {
+    "mtime": 1794541934.0177877,
+    "seen": 1794800565.522043,
+    "ast_hash": "cd886bd24686c78b583b42c9a44b7a8d",
+    "semantic_hash": "cd886bd24686c78b583b42c9a44b7a8d"
+  },
+  "irisTests/Presentation/TodayViewModelTests.swift": {
+    "mtime": 1794798518.5895374,
+    "seen": 1794800565.522043,
+    "ast_hash": "4eac2d8c922374f1fc2fd90df833e235",
+    "semantic_hash": "4eac2d8c922374f1fc2fd90df833e235"
+  },
+  "irisTests/irisTests.swift": {
+    "mtime": 1794371876.4552176,
+    "seen": 1794800565.522044,
+    "ast_hash": "256600307f4ddefe5cf65af14aabb591",
+    "semantic_hash": "256600307f4ddefe5cf65af14aabb591"
+  },
+  "irisUITests/irisUITests.swift": {
+    "mtime": 1794371876.503218,
+    "seen": 1794800565.522044,
+    "ast_hash": "f3eea6403b1e6a05478812479dd235fc",
+    "semantic_hash": "f3eea6403b1e6a05478812479dd235fc"
+  },
+  "screenshots/don-moi-full.png": {
+    "mtime": 1794797769.2177622,
+    "seen": 1794800565.522044,
+    "ast_hash": "97acb7d474ee346a30e59b5b06196167",
+    "semantic_hash": "97acb7d474ee346a30e59b5b06196167"
+  }
+}

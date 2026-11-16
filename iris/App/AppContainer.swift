@@ -70,8 +70,7 @@ final class AppContainer {
         TodayViewModel(
             shop: shop,
             loadTodaySummary: LoadTodaySummaryUseCase(repository: orderRepository),
-            // TODO: present the new-order form once it exists.
-            onCreateOrder: {}
+            createOrderUseCase: CreateOrderUseCase(repository: orderRepository)
         )
     }
 }

@@ -36,9 +36,18 @@ enum AppFormatters {
         return line.prefix(1).uppercased() + line.dropFirst()
     }
 
+    /// "0", "1.200.000". Grouped digits without a currency suffix, for editable money fields.
+    static func number(_ amount: Int) -> String {
+        moneyFormatter.string(from: NSNumber(value: amount)) ?? String(amount)
+    }
+
     /// "0đ", "1.200.000đ".
     static func money(_ amount: Int) -> String {
-        let number = moneyFormatter.string(from: NSNumber(value: amount)) ?? String(amount)
-        return number + "đ"
+        number(amount) + "đ"
+    }
+
+    /// "08–10h". Hour-only label for a delivery time slot chip.
+    static func timeSlot(_ window: DeliveryTimeWindow) -> String {
+        String(format: "%02d–%02dh", window.start.hour, window.end.hour)
     }
 }

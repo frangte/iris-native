@@ -9,6 +9,7 @@ import Foundation
 import Observation
 
 /// Home tab after onboarding: today's date, the shop name, summary tiles and the order list.
+/// Also owns the presentation state of the new-order sheet.
 @Observable
 final class TodayViewModel {
     /// One card in the summary row. The view renders these without knowing what each number means.
@@ -23,22 +24,23 @@ final class TodayViewModel {
     private(set) var summary: TodaySummary = .empty
     private(set) var isLoading = false
     private(set) var errorMessage: String?
+    /// True while the new-order sheet is shown. Settable so the sheet can bind to it.
+    var isCreatingOrder = false
 
     private let loadTodaySummary: LoadTodaySummaryUseCase
-    /// Called when the user asks to create an order. The owner decides how to present the form.
-    private let onCreateOrder: () -> Void
+    private let createOrderUseCase: CreateOrderUseCase
     /// Injected clock so the date line is testable.
     private let now: () -> Date
 
     init(
         shop: Shop,
         loadTodaySummary: LoadTodaySummaryUseCase,
-        onCreateOrder: @escaping () -> Void,
+        createOrderUseCase: CreateOrderUseCase,
         now: @escaping () -> Date = Date.init
     ) {
         self.shop = shop
         self.loadTodaySummary = loadTodaySummary
-        self.onCreateOrder = onCreateOrder
+        self.createOrderUseCase = createOrderUseCase
         self.now = now
     }
 
@@ -78,6 +80,22 @@ final class TodayViewModel {
     }
 
     func createOrder() {
-        onCreateOrder()
+        isCreatingOrder = true
+    }
+
+    /// Builds the view model for the new-order sheet. Saving closes the sheet and reloads the summary.
+    func makeNewOrderViewModel() -> NewOrderViewModel {
+        NewOrderViewModel(
+            shop: shop,
+            createOrderUseCase: createOrderUseCase,
+            onSaved: { [weak self] _ in
+                self?.isCreatingOrder = false
+                Task { await self?.load() }
+            },
+            onCancel: { [weak self] in
+                self?.isCreatingOrder = false
+            },
+            now: now
+        )
     }
 }

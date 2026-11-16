@@ -18,11 +18,11 @@ struct TodayViewModelTests {
     /// Friday 13 November 2026 at noon, local time.
     private let friday = Calendar.current.date(from: DateComponents(year: 2026, month: 11, day: 13, hour: 12))!
 
-    private func makeViewModel(onCreateOrder: @escaping () -> Void = {}) -> TodayViewModel {
+    private func makeViewModel() -> TodayViewModel {
         TodayViewModel(
             shop: shop,
             loadTodaySummary: LoadTodaySummaryUseCase(repository: repository),
-            onCreateOrder: onCreateOrder,
+            createOrderUseCase: CreateOrderUseCase(repository: repository),
             now: { friday }
         )
     }
@@ -38,6 +38,7 @@ struct TodayViewModelTests {
         #expect(viewModel.tiles.map(\.label) == [AppStrings.ordersToday, AppStrings.late, AppStrings.remainingMoney])
         #expect(viewModel.showsEmptyState)
         #expect(viewModel.isLoading == false)
+        #expect(viewModel.isCreatingOrder == false)
     }
 
     @Test func loadFillsTilesFromSummary() async {
@@ -62,12 +63,34 @@ struct TodayViewModelTests {
         #expect(viewModel.showsEmptyState)
     }
 
-    @Test func createOrderFiresCallback() {
-        var didRequestCreate = false
-        let viewModel = makeViewModel(onCreateOrder: { didRequestCreate = true })
+    @Test func createOrderPresentsSheet() {
+        let viewModel = makeViewModel()
 
         viewModel.createOrder()
 
-        #expect(didRequestCreate)
+        #expect(viewModel.isCreatingOrder)
+    }
+
+    @Test func cancellingNewOrderClosesSheet() {
+        let viewModel = makeViewModel()
+        viewModel.createOrder()
+
+        viewModel.makeNewOrderViewModel().cancel()
+
+        #expect(viewModel.isCreatingOrder == false)
+    }
+
+    @Test func savingNewOrderClosesSheetAndStoresOrderForShop() async {
+        let viewModel = makeViewModel()
+        viewModel.createOrder()
+        let newOrder = viewModel.makeNewOrderViewModel()
+        newOrder.input.items[0].name = "Bó hồng"
+        newOrder.input.items[0].unitPrice = 200_000
+
+        await newOrder.save()
+
+        #expect(viewModel.isCreatingOrder == false)
+        #expect(repository.createdDrafts.count == 1)
+        #expect(newOrder.shop == shop)
     }
 }
