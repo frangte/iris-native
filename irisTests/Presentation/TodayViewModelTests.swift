@@ -14,6 +14,7 @@ struct TodayViewModelTests {
     private struct LoadFailure: Error {}
 
     private let shop = Shop(id: "shop-1", name: "ABC", phone: nil, address: nil)
+    private let actor = Email("abc@abc.com")!
     private let repository = MockOrderRepository()
     /// Friday 13 November 2026 at noon, local time.
     private let friday = Calendar.current.date(from: DateComponents(year: 2026, month: 11, day: 13, hour: 12))!
@@ -21,8 +22,22 @@ struct TodayViewModelTests {
     private func makeViewModel() -> TodayViewModel {
         TodayViewModel(
             shop: shop,
+            actor: actor,
             loadTodaySummary: LoadTodaySummaryUseCase(repository: repository),
             createOrderUseCase: CreateOrderUseCase(repository: repository),
+            makeOrderDetail: { [repository, shop, actor] order, onChanged, onDeleted in
+                OrderDetailViewModel(
+                    order: order,
+                    shop: shop,
+                    actor: actor,
+                    loadOrder: LoadOrderUseCase(repository: repository),
+                    changeStatusUseCase: ChangeOrderStatusUseCase(repository: repository),
+                    deleteOrderUseCase: DeleteOrderUseCase(repository: repository),
+                    onChanged: onChanged,
+                    onDeleted: onDeleted,
+                    copyToPasteboard: { _ in }
+                )
+            },
             now: { friday }
         )
     }
@@ -39,6 +54,7 @@ struct TodayViewModelTests {
         #expect(viewModel.showsEmptyState)
         #expect(viewModel.isLoading == false)
         #expect(viewModel.isCreatingOrder == false)
+        #expect(viewModel.path.isEmpty)
     }
 
     @Test func loadFillsTilesFromSummary() async {
@@ -80,7 +96,7 @@ struct TodayViewModelTests {
         #expect(viewModel.isCreatingOrder == false)
     }
 
-    @Test func savingNewOrderClosesSheetAndStoresOrderForShop() async {
+    @Test func savingNewOrderClosesSheetAndOpensDetail() async {
         let viewModel = makeViewModel()
         viewModel.createOrder()
         let newOrder = viewModel.makeNewOrderViewModel()
@@ -91,6 +107,22 @@ struct TodayViewModelTests {
 
         #expect(viewModel.isCreatingOrder == false)
         #expect(repository.createdDrafts.count == 1)
+        #expect(viewModel.path.map(\.id) == ["order-1"])
         #expect(newOrder.shop == shop)
+    }
+
+    @Test func deletingFromDetailPopsBackToToday() async {
+        let viewModel = makeViewModel()
+        viewModel.createOrder()
+        let newOrder = viewModel.makeNewOrderViewModel()
+        newOrder.input.items[0].name = "Bó hồng"
+        newOrder.input.items[0].unitPrice = 200_000
+        await newOrder.save()
+        let detail = viewModel.makeOrderDetailViewModel(for: viewModel.path[0])
+
+        await detail.confirmDelete()
+
+        #expect(viewModel.path.isEmpty)
+        #expect(repository.deletedIds == ["order-1"])
     }
 }

@@ -5,7 +5,7 @@
 //  Created by SonnyHoang on 16/11/26.
 //
 
-/// User-facing text for order validation failures.
+/// User-facing text for order validation and lookup failures.
 extension OrderError {
     var message: String {
         switch self {
@@ -15,6 +15,7 @@ extension OrderError {
         case .discountExceedsTotal: AppStrings.discountExceedsTotal
         case .depositExceedsTotal: AppStrings.depositExceedTheOrderTotal
         case .missingRecipientName: AppStrings.recipientNameRequired
+        case .notFound: AppStrings.orderNotFound
         }
     }
 }

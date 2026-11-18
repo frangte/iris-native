@@ -72,14 +72,17 @@ struct DeliveryScheduleCard: View {
 }
 
 #Preview {
-    DeliveryScheduleCard(
-        viewModel: NewOrderViewModel(
-            shop: Shop(id: "1", name: "ABC", phone: nil, address: nil),
-            createOrderUseCase: CreateOrderUseCase(repository: InMemoryOrderRepository(simulatedDelay: .zero)),
-            onSaved: { _ in },
-            onCancel: {}
+    if let actor = Email("abc@abc.com") {
+        DeliveryScheduleCard(
+            viewModel: NewOrderViewModel(
+                shop: Shop(id: "1", name: "ABC", phone: nil, address: nil),
+                actor: actor,
+                createOrderUseCase: CreateOrderUseCase(repository: InMemoryOrderRepository(simulatedDelay: .zero)),
+                onSaved: { _ in },
+                onCancel: {}
+            )
         )
-    )
-    .padding(DSSpacing.screenPadding)
-    .background(Color.groupedBackground)
+        .padding(DSSpacing.screenPadding)
+        .background(Color.groupedBackground)
+    }
 }

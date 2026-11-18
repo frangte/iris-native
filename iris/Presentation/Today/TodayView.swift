@@ -16,7 +16,7 @@ struct TodayView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.path) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(viewModel.dateLine)
@@ -64,6 +64,9 @@ struct TodayView: View {
             .sheet(isPresented: $viewModel.isCreatingOrder) {
                 NewOrderView(viewModel: viewModel.makeNewOrderViewModel())
             }
+            .navigationDestination(for: Order.self) { order in
+                OrderDetailView(viewModel: viewModel.makeOrderDetailViewModel(for: order))
+            }
         }
         .tint(Color.tint)
     }
@@ -80,12 +83,17 @@ struct TodayView: View {
 }
 
 #Preview {
-    let repository = InMemoryOrderRepository(simulatedDelay: .zero)
-    TodayView(
-        viewModel: TodayViewModel(
-            shop: Shop(id: "1", name: "ABC", phone: nil, address: nil),
-            loadTodaySummary: LoadTodaySummaryUseCase(repository: repository),
-            createOrderUseCase: CreateOrderUseCase(repository: repository)
-        )
+    let container = AppContainer(
+        authRepository: InMemoryAuthRepository(),
+        shopRepository: InMemoryShopRepository(),
+        orderRepository: InMemoryOrderRepository(simulatedDelay: .zero)
     )
+    if let actor = Email("abc@abc.com") {
+        TodayView(
+            viewModel: container.makeTodayViewModel(
+                for: Shop(id: "1", name: "ABC", phone: nil, address: nil),
+                actor: actor
+            )
+        )
+    }
 }

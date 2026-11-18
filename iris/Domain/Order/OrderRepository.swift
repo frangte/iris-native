@@ -11,5 +11,15 @@ protocol OrderRepository {
     func todaySummary(shopId: Shop.ID) async throws -> TodaySummary
 
     /// Stores a validated order and returns it with its assigned id and number.
-    func createOrder(_ draft: OrderDraft, shopId: Shop.ID) async throws -> Order
+    /// `actor` is recorded as the creator in the order history.
+    func createOrder(_ draft: OrderDraft, shopId: Shop.ID, by actor: Email) async throws -> Order
+
+    /// Latest stored state of one order. Throws `OrderError.notFound` when it no longer exists.
+    func order(id: Order.ID) async throws -> Order
+
+    /// Moves the order to `status`, records who did it, and returns the updated order.
+    func updateStatus(orderId: Order.ID, to status: OrderStatus, by actor: Email) async throws -> Order
+
+    /// Removes the order for good.
+    func deleteOrder(id: Order.ID) async throws
 }

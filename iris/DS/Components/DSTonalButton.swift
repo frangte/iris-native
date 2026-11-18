@@ -10,9 +10,16 @@ import SwiftUI
 /// Secondary filled button: soft tint background with tinted text.
 /// Same sizing and loading behavior as `DSPrimaryButton`.
 struct DSTonalButton: View {
+    enum Style {
+        case tint
+        /// Soft red background for actions like cancelling an order.
+        case destructive
+    }
+
     let title: String
     let isEnabled: Bool
     let isLoading: Bool
+    var style: Style = .tint
     let action: () -> Void
 
     var body: some View {
@@ -20,24 +27,29 @@ struct DSTonalButton: View {
             ZStack {
                 Text(title)
                     .font(DSFont.headline)
-                    .foregroundStyle(Color.tint)
+                    .foregroundStyle(foreground)
                     .opacity(isLoading ? 0 : 1)
 
                 if isLoading {
                     ProgressView()
-                        .tint(Color.tint)
+                        .tint(foreground)
                 }
             }
             .frame(maxWidth: .infinity)
             .frame(height: DSSpacing.buttonHeight)
-            .background(
-                Color.tint.opacity(0.12),
-                in: RoundedRectangle(cornerRadius: DSSpacing.cellRadius)
-            )
+            .background(background, in: RoundedRectangle(cornerRadius: DSSpacing.cellRadius))
             .opacity(isEnabled ? 1 : 0.5)
         }
         .buttonStyle(.plain)
         .disabled(isLoading)
+    }
+
+    private var foreground: Color {
+        style == .destructive ? Color.danger : Color.tint
+    }
+
+    private var background: Color {
+        style == .destructive ? Color.dangerSoft : Color.tint.opacity(0.12)
     }
 }
 
@@ -46,6 +58,7 @@ struct DSTonalButton: View {
         DSTonalButton(title: AppStrings.joinShop, isEnabled: true, isLoading: false) {}
         DSTonalButton(title: AppStrings.joinShop, isEnabled: false, isLoading: false) {}
         DSTonalButton(title: AppStrings.joinShop, isEnabled: true, isLoading: true) {}
+        DSTonalButton(title: AppStrings.cancelOrder, isEnabled: true, isLoading: false, style: .destructive) {}
     }
     .padding(DSSpacing.screenPadding)
 }

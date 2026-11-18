@@ -227,12 +227,15 @@ struct NewOrderView: View {
 }
 
 #Preview {
-    NewOrderView(
-        viewModel: NewOrderViewModel(
-            shop: Shop(id: "1", name: "ABC", phone: nil, address: nil),
-            createOrderUseCase: CreateOrderUseCase(repository: InMemoryOrderRepository(simulatedDelay: .zero)),
-            onSaved: { _ in },
-            onCancel: {}
+    if let actor = Email("abc@abc.com") {
+        NewOrderView(
+            viewModel: NewOrderViewModel(
+                shop: Shop(id: "1", name: "ABC", phone: nil, address: nil),
+                actor: actor,
+                createOrderUseCase: CreateOrderUseCase(repository: InMemoryOrderRepository(simulatedDelay: .zero)),
+                onSaved: { _ in },
+                onCancel: {}
+            )
         )
-    )
+    }
 }

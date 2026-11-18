@@ -25,6 +25,7 @@ struct NewOrderViewModelTests {
     ) -> NewOrderViewModel {
         NewOrderViewModel(
             shop: shop,
+            actor: Email("abc@abc.com")!,
             createOrderUseCase: CreateOrderUseCase(repository: repository),
             onSaved: onSaved,
             onCancel: onCancel,

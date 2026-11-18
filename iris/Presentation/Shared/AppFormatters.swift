@@ -19,6 +19,22 @@ enum AppFormatters {
         return formatter
     }()
 
+    /// "19:35".
+    private static let clockFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = vietnamese
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
+    /// "16/11".
+    private static let dayMonthFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = vietnamese
+        formatter.dateFormat = "dd/MM"
+        return formatter
+    }()
+
     /// Whole VND amounts with a dot as the thousands separator: 1.200.000.
     private static let moneyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -36,6 +52,22 @@ enum AppFormatters {
         return line.prefix(1).uppercased() + line.dropFirst()
     }
 
+    /// "Hôm nay", "Mai", otherwise the weekday line. Relative to `now` on the given calendar.
+    static func relativeDay(_ date: Date, now: Date, calendar: Calendar) -> String {
+        if calendar.isDate(date, inSameDayAs: now) {
+            return AppStrings.today
+        }
+        if let tomorrow = calendar.date(byAdding: .day, value: 1, to: now), calendar.isDate(date, inSameDayAs: tomorrow) {
+            return AppStrings.tomorrow
+        }
+        return dayLine(date)
+    }
+
+    /// "19:35 · 16/11". When something happened, for history lines.
+    static func clockAndDay(_ date: Date) -> String {
+        "\(clockFormatter.string(from: date)) · \(dayMonthFormatter.string(from: date))"
+    }
+
     /// "0", "1.200.000". Grouped digits without a currency suffix, for editable money fields.
     static func number(_ amount: Int) -> String {
         moneyFormatter.string(from: NSNumber(value: amount)) ?? String(amount)
@@ -49,5 +81,10 @@ enum AppFormatters {
     /// "08–10h". Hour-only label for a delivery time slot chip.
     static func timeSlot(_ window: DeliveryTimeWindow) -> String {
         String(format: "%02d–%02dh", window.start.hour, window.end.hour)
+    }
+
+    /// "08:00–10:00". Full start and end of a delivery window.
+    static func timeRange(_ window: DeliveryTimeWindow) -> String {
+        String(format: "%02d:%02d–%02d:%02d", window.start.hour, window.start.minute, window.end.hour, window.end.minute)
     }
 }

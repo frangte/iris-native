@@ -9,8 +9,8 @@
 struct CreateOrderUseCase {
     let repository: OrderRepository
 
-    func execute(_ input: OrderInput, shopId: Shop.ID) async throws -> Order {
+    func execute(_ input: OrderInput, shopId: Shop.ID, actor: Email) async throws -> Order {
         let draft = try OrderDraft(input)
-        return try await repository.createOrder(draft, shopId: shopId)
+        return try await repository.createOrder(draft, shopId: shopId, by: actor)
     }
 }

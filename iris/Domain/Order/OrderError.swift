@@ -5,7 +5,7 @@
 //  Created by SonnyHoang on 16/11/26.
 //
 
-/// Validation failures when building an order from the form. Messages are mapped in Presentation.
+/// Validation and lookup failures for orders. Messages are mapped in Presentation.
 enum OrderError: Error, Equatable {
     /// No product line has a name.
     case noItems
@@ -19,4 +19,6 @@ enum OrderError: Error, Equatable {
     case depositExceedsTotal
     /// A separate recipient was requested without a name.
     case missingRecipientName
+    /// The order does not exist, e.g. it was deleted on another device.
+    case notFound
 }

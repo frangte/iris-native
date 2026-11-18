@@ -66,11 +66,35 @@ final class AppContainer {
         )
     }
 
-    func makeTodayViewModel(for shop: Shop) -> TodayViewModel {
+    /// `actor` is the signed-in member; every order they create or change is attributed to them.
+    func makeTodayViewModel(for shop: Shop, actor: Email) -> TodayViewModel {
         TodayViewModel(
             shop: shop,
+            actor: actor,
             loadTodaySummary: LoadTodaySummaryUseCase(repository: orderRepository),
-            createOrderUseCase: CreateOrderUseCase(repository: orderRepository)
+            createOrderUseCase: CreateOrderUseCase(repository: orderRepository),
+            makeOrderDetail: { [unowned self] order, onChanged, onDeleted in
+                self.makeOrderDetailViewModel(order: order, shop: shop, actor: actor, onChanged: onChanged, onDeleted: onDeleted)
+            }
+        )
+    }
+
+    func makeOrderDetailViewModel(
+        order: Order,
+        shop: Shop,
+        actor: Email,
+        onChanged: @escaping () -> Void,
+        onDeleted: @escaping () -> Void
+    ) -> OrderDetailViewModel {
+        OrderDetailViewModel(
+            order: order,
+            shop: shop,
+            actor: actor,
+            loadOrder: LoadOrderUseCase(repository: orderRepository),
+            changeStatusUseCase: ChangeOrderStatusUseCase(repository: orderRepository),
+            deleteOrderUseCase: DeleteOrderUseCase(repository: orderRepository),
+            onChanged: onChanged,
+            onDeleted: onDeleted
         )
     }
 }

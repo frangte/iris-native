@@ -29,6 +29,8 @@ final class NewOrderViewModel {
     private(set) var isSaving = false
     private(set) var errorMessage: String?
 
+    /// Team member creating the order, recorded in its history.
+    private let actor: Email
     private let createOrderUseCase: CreateOrderUseCase
     /// Called with the stored order. The owner dismisses the form and refreshes its list.
     private let onSaved: (Order) -> Void
@@ -39,6 +41,7 @@ final class NewOrderViewModel {
 
     init(
         shop: Shop,
+        actor: Email,
         createOrderUseCase: CreateOrderUseCase,
         onSaved: @escaping (Order) -> Void,
         onCancel: @escaping () -> Void,
@@ -46,6 +49,7 @@ final class NewOrderViewModel {
         now: @escaping () -> Date = Date.init
     ) {
         self.shop = shop
+        self.actor = actor
         self.createOrderUseCase = createOrderUseCase
         self.onSaved = onSaved
         self.onCancel = onCancel
@@ -180,7 +184,7 @@ final class NewOrderViewModel {
         defer { isSaving = false }
 
         do {
-            let order = try await createOrderUseCase.execute(input, shopId: shop.id)
+            let order = try await createOrderUseCase.execute(input, shopId: shop.id, actor: actor)
             onSaved(order)
         } catch let error as OrderError {
             errorMessage = error.message

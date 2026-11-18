@@ -17,7 +17,7 @@ struct RootView: View {
 
         if let session = sessionStore.session {
             if let shop = sessionStore.shop {
-                MainTabView(container: container, shop: shop)
+                MainTabView(container: container, session: session, shop: shop)
             } else {
                 OnboardingView(viewModel: container.makeOnboardingViewModel(for: session))
             }

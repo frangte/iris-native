@@ -18,6 +18,7 @@ struct MainTabView: View {
     }
 
     let container: AppContainer
+    let session: AuthSession
     let shop: Shop
 
     @State private var selectedTab: Tab = .today
@@ -25,7 +26,7 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             SwiftUI.Tab(AppStrings.today, systemImage: "sun.max.fill", value: Tab.today) {
-                TodayView(viewModel: container.makeTodayViewModel(for: shop))
+                TodayView(viewModel: container.makeTodayViewModel(for: shop, actor: session.email))
             }
             SwiftUI.Tab(AppStrings.order, systemImage: "list.bullet.rectangle", value: Tab.orders) {
                 PlaceholderTabView(title: AppStrings.orders)
@@ -58,8 +59,11 @@ private struct PlaceholderTabView: View {
 }
 
 #Preview {
-    MainTabView(
-        container: AppContainer.live(),
-        shop: Shop(id: "1", name: "ABC", phone: nil, address: nil)
-    )
+    if let email = Email("abc@abc.com") {
+        MainTabView(
+            container: AppContainer.live(),
+            session: AuthSession(email: email, token: "preview"),
+            shop: Shop(id: "1", name: "ABC", phone: nil, address: nil)
+        )
+    }
 }
