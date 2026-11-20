@@ -19,6 +19,13 @@ protocol ShopRepository {
     /// Everyone with access to the shop with `shopID`, in no particular order.
     func loadMembers(ofShopID shopID: String) async throws -> [ShopMember]
 
-    /// Issues a new invite code for the shop with `shopID`. Earlier codes stop working.
-    func createInviteCode(forShopID shopID: String) async throws -> InviteCode
+    /// Every invite code of the shop with `shopID` that was not revoked, including expired ones.
+    func loadInvites(ofShopID shopID: String) async throws -> [ShopInvite]
+
+    /// Issues a new invite code for the shop with `shopID`, valid for `ShopInvite.lifetime`.
+    /// Earlier codes keep working.
+    func createInvite(forShopID shopID: String) async throws -> ShopInvite
+
+    /// Makes `code` unusable for joining the shop with `shopID`.
+    func revokeInvite(_ code: InviteCode, inShopID shopID: String) async throws
 }

@@ -18,6 +18,9 @@ enum ShopRoute: Hashable {
 /// another shop, the account name, and sign-out. Builds the view models of the pushed screens.
 @Observable
 final class ShopViewModel {
+    /// Builds the members screen for a shop, starting from the members already loaded.
+    typealias MembersFactory = (_ shop: Shop, _ members: [ShopMember]) -> ShopMembersViewModel
+
     /// Email of the signed-in user.
     let email: Email
 
@@ -47,7 +50,7 @@ final class ShopViewModel {
 
     private let loadMembersUseCase: LoadShopMembersUseCase
     private let updateShopUseCase: UpdateShopUseCase
-    private let createInviteCodeUseCase: CreateInviteCodeUseCase
+    private let makeMembers: MembersFactory
     private let createShopUseCase: CreateShopUseCase
     private let joinShopUseCase: JoinShopUseCase
     /// Called with the shop the user now works in: the edited current shop, or a newly created or joined one.
@@ -61,24 +64,24 @@ final class ShopViewModel {
         displayName: String,
         loadMembersUseCase: LoadShopMembersUseCase,
         updateShopUseCase: UpdateShopUseCase,
-        createInviteCodeUseCase: CreateInviteCodeUseCase,
         createShopUseCase: CreateShopUseCase,
         joinShopUseCase: JoinShopUseCase,
         onShopChanged: @escaping (Shop) -> Void,
         onDisplayNameChanged: @escaping (String) -> Void,
-        onLogout: @escaping () -> Void
+        onLogout: @escaping () -> Void,
+        makeMembers: @escaping MembersFactory
     ) {
         self.shop = shop
         self.email = email
         self.displayName = displayName
         self.loadMembersUseCase = loadMembersUseCase
         self.updateShopUseCase = updateShopUseCase
-        self.createInviteCodeUseCase = createInviteCodeUseCase
         self.createShopUseCase = createShopUseCase
         self.joinShopUseCase = joinShopUseCase
         self.onShopChanged = onShopChanged
         self.onDisplayNameChanged = onDisplayNameChanged
         self.onLogout = onLogout
+        self.makeMembers = makeMembers
     }
 
     // MARK: - Display data
@@ -159,13 +162,7 @@ final class ShopViewModel {
 
     /// Starts from the members already loaded here so the list shows without a spinner.
     func makeMembersViewModel() -> ShopMembersViewModel {
-        ShopMembersViewModel(
-            shop: shop,
-            email: email,
-            members: members,
-            loadMembersUseCase: loadMembersUseCase,
-            createInviteCodeUseCase: createInviteCodeUseCase
-        )
+        makeMembers(shop, members)
     }
 
     /// Creating closes the sheet and switches the app to the new shop.

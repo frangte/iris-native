@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Member list and invite code. Pushed from the Shop tab.
+/// Member list and invite codes. Pushed from the Shop tab.
 struct ShopMembersView: View {
     @State private var viewModel: ShopMembersViewModel
 
@@ -18,13 +18,7 @@ struct ShopMembersView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DSSpacing.xl) {
-                DSFormSection(title: AppStrings.members, footer: AppStrings.membersFooter) {
-                    DSFormCard {
-                        ForEach(viewModel.rows) { row in
-                            DSInfoRow(systemImage: "person.crop.circle", title: row.title, subtitle: row.subtitle)
-                        }
-                    }
-                }
+                membersSection
 
                 if let errorMessage = viewModel.errorMessage {
                     DSErrorBanner(message: errorMessage)
@@ -41,65 +35,71 @@ struct ShopMembersView: View {
         .toolbarTitleDisplayMode(.inline)
         .task { await viewModel.load() }
         .refreshable { await viewModel.load() }
-        .overlay(alignment: .bottom) { toast }
+        .background { revokeAlertHost }
         .animation(.default, value: viewModel.rows)
-        .animation(.default, value: viewModel.inviteCode)
+        .animation(.default, value: viewModel.inviteCards)
         .animation(.default, value: viewModel.errorMessage)
-        .animation(.default, value: viewModel.toastMessage)
     }
 
     // MARK: - Sections
 
-    private var inviteSection: some View {
-        DSFormSection(title: AppStrings.inviteMore, footer: AppStrings.inviteCodeHint) {
+    private var membersSection: some View {
+        DSFormSection(title: viewModel.membersTitle, footer: AppStrings.onlyOwnerRemovesMembers) {
             DSFormCard {
-                if let inviteCode = viewModel.inviteCode {
-                    DSInfoRow(systemImage: "key", title: inviteCode.value, subtitle: AppStrings.invitationCode) {
-                        Button(AppStrings.copyInviteCode, action: viewModel.copyInviteCode)
-                            .font(DSFont.subhead.weight(.semibold))
-                            .foregroundStyle(Color.tint)
-                    }
-                    if let inviteMessage = viewModel.inviteMessage {
-                        ShareLink(item: inviteMessage) {
-                            DSActionLabel(title: AppStrings.shareInviteCode, systemImage: "square.and.arrow.up", style: .neutral)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    inviteCodeButton(title: AppStrings.createNewInviteCode, systemImage: "arrow.clockwise")
-                } else {
-                    inviteCodeButton(title: AppStrings.createInviteCode, systemImage: "person.badge.plus")
+                ForEach(viewModel.rows) { row in
+                    DSInfoRow(systemImage: "person.crop.circle", iconColor: .tint, title: row.title, subtitle: row.subtitle)
                 }
             }
         }
     }
 
-    // MARK: - Subviews
+    private var inviteSection: some View {
+        DSFormSection(title: AppStrings.inviteManager, footer: AppStrings.inviteCodeHint) {
+            DSFormCard {
+                ForEach(viewModel.inviteCards) { invite in
+                    InviteCodeCard(
+                        invite: invite,
+                        isRevoking: viewModel.revokingCode?.value == invite.code
+                    ) {
+                        viewModel.requestRevoke(id: invite.id)
+                    }
+                }
 
-    private func inviteCodeButton(title: String, systemImage: String) -> some View {
-        DSActionRow(title: title, systemImage: systemImage) {
-            Task { await viewModel.createInviteCode() }
-        }
-        .disabled(viewModel.isCreatingCode)
-        .overlay(alignment: .trailing) {
-            if viewModel.isCreatingCode {
-                ProgressView()
-                    .padding(.trailing, DSSpacing.controlInset)
+                DSActionRow(title: AppStrings.createInviteCode, systemImage: "ticket") {
+                    Task { await viewModel.createInviteCode() }
+                }
+                .disabled(viewModel.isCreatingCode)
+                .overlay(alignment: .trailing) {
+                    if viewModel.isCreatingCode {
+                        ProgressView()
+                            .padding(.trailing, DSSpacing.controlInset)
+                    }
+                }
             }
         }
     }
 
-    @ViewBuilder
-    private var toast: some View {
-        if let message = viewModel.toastMessage {
-            Text(message)
-                .font(DSFont.subhead)
-                .foregroundStyle(Color.cell)
-                .padding(.horizontal, DSSpacing.lg)
-                .padding(.vertical, DSSpacing.md)
-                .background(Color.label.opacity(0.9), in: Capsule())
-                .padding(.bottom, DSSpacing.xl)
-                .transition(.move(edge: .bottom).combined(with: .opacity))
-        }
+    // MARK: - Helpers
+
+    /// Hosts the revoke confirmation with a neutral tint so "Huỷ" is black instead of the
+    /// brand pink the navigation stack sets. Scoped to this hidden view so the screen keeps its tint.
+    private var revokeAlertHost: some View {
+        Color.clear
+            .alert(viewModel.revokeConfirmTitle, isPresented: isConfirmingRevoke, presenting: viewModel.pendingRevoke) { invite in
+                Button(AppStrings.cancel, role: .cancel) {}
+                Button(AppStrings.revoke, role: .destructive) {
+                    Task { await viewModel.confirmRevoke(invite) }
+                }
+            }
+            .tint(Color.label)
+    }
+
+    /// Shows the alert while an invite waits for confirmation; dismissing clears it.
+    private var isConfirmingRevoke: Binding<Bool> {
+        Binding(
+            get: { viewModel.pendingRevoke != nil },
+            set: { if !$0 { viewModel.pendingRevoke = nil } }
+        )
     }
 }
 
@@ -109,11 +109,13 @@ struct ShopMembersView: View {
         NavigationStack {
             ShopMembersView(
                 viewModel: ShopMembersViewModel(
-                    shop: Shop(id: "1", name: "Tiệm hoa Mộc", phone: nil, address: nil),
+                    shop: Shop(id: "1", name: "ABC", phone: nil, address: nil),
                     email: email,
                     members: [ShopMember(email: email, role: .owner)],
                     loadMembersUseCase: LoadShopMembersUseCase(repository: repository),
-                    createInviteCodeUseCase: CreateInviteCodeUseCase(repository: repository)
+                    loadInvitesUseCase: LoadShopInvitesUseCase(repository: repository),
+                    createInviteCodeUseCase: CreateInviteCodeUseCase(repository: repository),
+                    revokeInviteCodeUseCase: RevokeInviteCodeUseCase(repository: repository)
                 )
             )
         }

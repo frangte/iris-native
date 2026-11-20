@@ -73,12 +73,26 @@ final class AppContainer {
             displayName: sessionStore.displayName,
             loadMembersUseCase: LoadShopMembersUseCase(repository: shopRepository),
             updateShopUseCase: UpdateShopUseCase(repository: shopRepository),
-            createInviteCodeUseCase: CreateInviteCodeUseCase(repository: shopRepository),
             createShopUseCase: CreateShopUseCase(repository: shopRepository),
             joinShopUseCase: JoinShopUseCase(repository: shopRepository),
             onShopChanged: { [sessionStore] shop in sessionStore.enter(shop) },
             onDisplayNameChanged: { [sessionStore] name in sessionStore.updateDisplayName(name) },
-            onLogout: { [sessionStore] in sessionStore.signOut() }
+            onLogout: { [sessionStore] in sessionStore.signOut() },
+            makeMembers: { [unowned self] shop, members in
+                self.makeShopMembersViewModel(for: shop, email: email, members: members)
+            }
+        )
+    }
+
+    func makeShopMembersViewModel(for shop: Shop, email: Email, members: [ShopMember]) -> ShopMembersViewModel {
+        ShopMembersViewModel(
+            shop: shop,
+            email: email,
+            members: members,
+            loadMembersUseCase: LoadShopMembersUseCase(repository: shopRepository),
+            loadInvitesUseCase: LoadShopInvitesUseCase(repository: shopRepository),
+            createInviteCodeUseCase: CreateInviteCodeUseCase(repository: shopRepository),
+            revokeInviteCodeUseCase: RevokeInviteCodeUseCase(repository: shopRepository)
         )
     }
 

@@ -27,18 +27,30 @@ struct ShopViewModelTests {
         // Capture a local reference so the escaping closures do not capture `self` mid-initialization.
         let sink = Sink()
         self.sink = sink
+        let email = email
+        let repository = repository
         viewModel = ShopViewModel(
             shop: shop,
             email: email,
             displayName: "",
             loadMembersUseCase: LoadShopMembersUseCase(repository: repository),
             updateShopUseCase: UpdateShopUseCase(repository: repository),
-            createInviteCodeUseCase: CreateInviteCodeUseCase(repository: repository),
             createShopUseCase: CreateShopUseCase(repository: repository),
             joinShopUseCase: JoinShopUseCase(repository: repository),
             onShopChanged: { sink.shops.append($0) },
             onDisplayNameChanged: { sink.displayNames.append($0) },
-            onLogout: { sink.didLogout = true }
+            onLogout: { sink.didLogout = true },
+            makeMembers: { shop, members in
+                ShopMembersViewModel(
+                    shop: shop,
+                    email: email,
+                    members: members,
+                    loadMembersUseCase: LoadShopMembersUseCase(repository: repository),
+                    loadInvitesUseCase: LoadShopInvitesUseCase(repository: repository),
+                    createInviteCodeUseCase: CreateInviteCodeUseCase(repository: repository),
+                    revokeInviteCodeUseCase: RevokeInviteCodeUseCase(repository: repository)
+                )
+            }
         )
     }
 
@@ -128,6 +140,15 @@ struct ShopViewModelTests {
         viewModel.makeNewShopViewModel().cancel()
 
         #expect(viewModel.isCreatingShop == false)
+    }
+
+    @Test func membersScreenStartsFromLoadedMembers() async {
+        repository.membersResult = .success([ShopMember(email: email, role: .owner)])
+        await viewModel.load()
+
+        let members = viewModel.makeMembersViewModel()
+
+        #expect(members.membersTitle == "1 người trong Tiệm hoa Mộc")
     }
 
     @Test func logoutAsksFirst() {

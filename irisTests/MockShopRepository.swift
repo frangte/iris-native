@@ -5,6 +5,7 @@
 //  Created by SonnyHoang on 12/11/26.
 //
 
+import Foundation
 @testable import iris
 
 /// Test double that records calls and returns preconfigured results.
@@ -36,9 +37,14 @@ final class MockShopRepository: ShopRepository {
 
     private(set) var updatedShops: [(id: String, draft: ShopDraft)] = []
     private(set) var inviteCodeRequests: [String] = []
+    private(set) var revokedCodes: [InviteCode] = []
     /// `nil` echoes the draft back as the saved shop.
     var updateError: Error?
-    var inviteCodeResult: Result<InviteCode, Error> = .success(InviteCode("ABC123")!)
+    var inviteResult: Result<ShopInvite, Error> = .success(
+        ShopInvite(code: InviteCode("ABC123")!, expiresAt: Date(timeIntervalSince1970: 1_795_737_600), useCount: 0)
+    )
+    var invitesResult: Result<[ShopInvite], Error> = .success([])
+    var revokeError: Error?
 
     func updateShop(id shopID: String, with draft: ShopDraft) async throws -> Shop {
         updatedShops.append((shopID, draft))
@@ -52,8 +58,17 @@ final class MockShopRepository: ShopRepository {
         try membersResult.get()
     }
 
-    func createInviteCode(forShopID shopID: String) async throws -> InviteCode {
+    func loadInvites(ofShopID shopID: String) async throws -> [ShopInvite] {
+        try invitesResult.get()
+    }
+
+    func createInvite(forShopID shopID: String) async throws -> ShopInvite {
         inviteCodeRequests.append(shopID)
-        return try inviteCodeResult.get()
+        return try inviteResult.get()
+    }
+
+    func revokeInvite(_ code: InviteCode, inShopID shopID: String) async throws {
+        revokedCodes.append(code)
+        if let revokeError { throw revokeError }
     }
 }

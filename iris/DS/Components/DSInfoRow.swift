@@ -11,17 +11,20 @@ import SwiftUI
 /// Intended to be placed inside `DSFormCard`.
 struct DSInfoRow<Trailing: View>: View {
     let systemImage: String?
+    let iconColor: Color
     let title: String
     let subtitle: String?
     let trailing: Trailing
 
     init(
         systemImage: String? = nil,
+        iconColor: Color = .secondaryLabel,
         title: String,
         subtitle: String? = nil,
         @ViewBuilder trailing: () -> Trailing
     ) {
         self.systemImage = systemImage
+        self.iconColor = iconColor
         self.title = title
         self.subtitle = subtitle
         self.trailing = trailing()
@@ -32,7 +35,7 @@ struct DSInfoRow<Trailing: View>: View {
             if let systemImage {
                 Image(systemName: systemImage)
                     .font(.body.weight(.medium))
-                    .foregroundStyle(Color.secondaryLabel)
+                    .foregroundStyle(iconColor)
                     .frame(width: DSSpacing.iconSize)
             }
 
@@ -58,8 +61,8 @@ struct DSInfoRow<Trailing: View>: View {
 }
 
 extension DSInfoRow where Trailing == EmptyView {
-    init(systemImage: String? = nil, title: String, subtitle: String? = nil) {
-        self.init(systemImage: systemImage, title: title, subtitle: subtitle) { EmptyView() }
+    init(systemImage: String? = nil, iconColor: Color = .secondaryLabel, title: String, subtitle: String? = nil) {
+        self.init(systemImage: systemImage, iconColor: iconColor, title: title, subtitle: subtitle) { EmptyView() }
     }
 }
 

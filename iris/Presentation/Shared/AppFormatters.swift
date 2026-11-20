@@ -68,6 +68,11 @@ enum AppFormatters {
         "\(clockFormatter.string(from: date)) · \(dayMonthFormatter.string(from: date))"
     }
 
+    /// "27/11". Day and month only, for short dates such as an expiry.
+    static func dayMonth(_ date: Date) -> String {
+        dayMonthFormatter.string(from: date)
+    }
+
     /// "0", "1.200.000". Grouped digits without a currency suffix, for editable money fields.
     static func number(_ amount: Int) -> String {
         moneyFormatter.string(from: NSNumber(value: amount)) ?? String(amount)
