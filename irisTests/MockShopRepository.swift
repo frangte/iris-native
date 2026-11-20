@@ -33,4 +33,27 @@ final class MockShopRepository: ShopRepository {
         joinedCodes.append((inviteCode, member))
         return try joinResult.get()
     }
+
+    private(set) var updatedShops: [(id: String, draft: ShopDraft)] = []
+    private(set) var inviteCodeRequests: [String] = []
+    /// `nil` echoes the draft back as the saved shop.
+    var updateError: Error?
+    var inviteCodeResult: Result<InviteCode, Error> = .success(InviteCode("ABC123")!)
+
+    func updateShop(id shopID: String, with draft: ShopDraft) async throws -> Shop {
+        updatedShops.append((shopID, draft))
+        if let updateError { throw updateError }
+        return Shop(id: shopID, name: draft.name, phone: draft.phone, address: draft.address)
+    }
+
+    var membersResult: Result<[ShopMember], Error> = .success([])
+
+    func loadMembers(ofShopID shopID: String) async throws -> [ShopMember] {
+        try membersResult.get()
+    }
+
+    func createInviteCode(forShopID shopID: String) async throws -> InviteCode {
+        inviteCodeRequests.append(shopID)
+        return try inviteCodeResult.get()
+    }
 }

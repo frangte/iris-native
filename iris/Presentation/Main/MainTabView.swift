@@ -35,7 +35,7 @@ struct MainTabView: View {
                 PlaceholderTabView(title: AppStrings.customer)
             }
             SwiftUI.Tab(AppStrings.shop, systemImage: "storefront", value: Tab.shop) {
-                PlaceholderTabView(title: shop.name)
+                ShopView(viewModel: container.makeShopViewModel(for: shop, email: session.email))
             }
         }
         .tint(Color.tint)

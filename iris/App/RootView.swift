@@ -18,6 +18,8 @@ struct RootView: View {
         if let session = sessionStore.session {
             if let shop = sessionStore.shop {
                 MainTabView(container: container, session: session, shop: shop)
+                    // Switching to another shop rebuilds every tab so no view model keeps the old shop.
+                    .id(shop.id)
             } else {
                 OnboardingView(viewModel: container.makeOnboardingViewModel(for: session))
             }

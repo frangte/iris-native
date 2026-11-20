@@ -14,6 +14,8 @@ final class AppSessionStore {
     private(set) var session: AuthSession?
     /// Shop the user is working in. `nil` until onboarding completes.
     private(set) var shop: Shop?
+    /// Name the user typed in the Shop tab. Empty until they set one.
+    private(set) var displayName = ""
 
     func signIn(_ session: AuthSession) {
         self.session = session
@@ -23,8 +25,13 @@ final class AppSessionStore {
         self.shop = shop
     }
 
+    func updateDisplayName(_ name: String) {
+        displayName = name
+    }
+
     func signOut() {
         shop = nil
         session = nil
+        displayName = ""
     }
 }

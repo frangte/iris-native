@@ -71,7 +71,7 @@ struct NewOrderView: View {
         }
         .tint(Color.tint)
     }
-
+    
     // MARK: - Sections
 
     private var customerSection: some View {

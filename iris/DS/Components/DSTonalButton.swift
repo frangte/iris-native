@@ -20,15 +20,22 @@ struct DSTonalButton: View {
     let isEnabled: Bool
     let isLoading: Bool
     var style: Style = .tint
+    /// Optional SF Symbol shown before the title.
+    var systemImage: String? = nil
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             ZStack {
-                Text(title)
-                    .font(DSFont.headline)
-                    .foregroundStyle(foreground)
-                    .opacity(isLoading ? 0 : 1)
+                HStack(spacing: DSSpacing.sm) {
+                    if let systemImage {
+                        Image(systemName: systemImage)
+                    }
+                    Text(title)
+                }
+                .font(DSFont.headline)
+                .foregroundStyle(foreground)
+                .opacity(isLoading ? 0 : 1)
 
                 if isLoading {
                     ProgressView()
@@ -59,6 +66,7 @@ struct DSTonalButton: View {
         DSTonalButton(title: AppStrings.joinShop, isEnabled: false, isLoading: false) {}
         DSTonalButton(title: AppStrings.joinShop, isEnabled: true, isLoading: true) {}
         DSTonalButton(title: AppStrings.cancelOrder, isEnabled: true, isLoading: false, style: .destructive) {}
+        DSTonalButton(title: AppStrings.logout, isEnabled: true, isLoading: false, style: .destructive, systemImage: "rectangle.portrait.and.arrow.right") {}
     }
     .padding(DSSpacing.screenPadding)
 }

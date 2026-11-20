@@ -66,6 +66,22 @@ final class AppContainer {
         )
     }
 
+    func makeShopViewModel(for shop: Shop, email: Email) -> ShopViewModel {
+        ShopViewModel(
+            shop: shop,
+            email: email,
+            displayName: sessionStore.displayName,
+            loadMembersUseCase: LoadShopMembersUseCase(repository: shopRepository),
+            updateShopUseCase: UpdateShopUseCase(repository: shopRepository),
+            createInviteCodeUseCase: CreateInviteCodeUseCase(repository: shopRepository),
+            createShopUseCase: CreateShopUseCase(repository: shopRepository),
+            joinShopUseCase: JoinShopUseCase(repository: shopRepository),
+            onShopChanged: { [sessionStore] shop in sessionStore.enter(shop) },
+            onDisplayNameChanged: { [sessionStore] name in sessionStore.updateDisplayName(name) },
+            onLogout: { [sessionStore] in sessionStore.signOut() }
+        )
+    }
+
     /// `actor` is the signed-in member; every order they create or change is attributed to them.
     func makeTodayViewModel(for shop: Shop, actor: Email) -> TodayViewModel {
         TodayViewModel(
